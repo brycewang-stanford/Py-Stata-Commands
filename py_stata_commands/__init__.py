@@ -1,0 +1,55 @@
+"""
+Py-Stata-Commands: Comprehensive Python package providing Stata-equivalent commands for pandas DataFrames
+
+This package brings the familiar functionality of Stata's most essential data manipulation 
+and statistical commands to Python, making the transition from Stata to Python seamless 
+for researchers and data analysts.
+
+Modules:
+--------
+- tabulate: Cross-tabulation and frequency analysis (Stata's `tabulate`)
+- egen: Extended data generation functions (Stata's `egen`)  
+- reghdfe: High-dimensional fixed effects regression (Stata's `reghdfe`)
+- winsor2: Data winsorizing and trimming (Stata's `winsor2`)
+
+Examples:
+---------
+>>> import pandas as pd
+>>> from py_stata_commands import tabulate, egen, reghdfe, winsor2
+
+>>> # Cross-tabulation
+>>> result = tabulate.tabulate(df['var1'], df['var2'])
+
+>>> # Data generation
+>>> df['rank_var'] = egen.rank(df['income'])
+
+>>> # Fixed effects regression
+>>> result = reghdfe.reghdfe(df, 'wage', ['experience'], absorb=['firm_id'])
+
+>>> # Winsorizing
+>>> result = winsor2.winsor2(df, ['income'], cuts=(1, 99))
+"""
+
+__version__ = "0.1.0"
+__author__ = "Bryce Wang"
+__email__ = "brycew6m@stanford.edu"
+__license__ = "MIT"
+
+# Import main modules for convenient access
+try:
+    from . import tabulate
+    from . import egen  
+    from . import reghdfe
+    from . import winsor2
+    from . import utils
+except ImportError:
+    # Handle relative import issues during development
+    pass
+
+__all__ = [
+    'tabulate',
+    'egen', 
+    'reghdfe',
+    'winsor2',
+    'utils'
+]

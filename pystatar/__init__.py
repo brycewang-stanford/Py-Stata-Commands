@@ -1,5 +1,5 @@
 """
-Py-Stata-Commands: Comprehensive Python package providing Stata-equivalent commands for pandas DataFrames
+PyStataR: Comprehensive Python package providing Stata-equivalent commands for pandas DataFrames
 
 This package brings the familiar functionality of Stata's most essential data manipulation 
 and statistical commands to Python, making the transition from Stata to Python seamless 
@@ -15,7 +15,7 @@ Modules:
 Examples:
 ---------
 >>> import pandas as pd
->>> from py_stata_commands import tabulate, egen, reghdfe, winsor2
+>>> from pystatar import tabulate, egen, reghdfe, winsor2
 
 >>> # Cross-tabulation
 >>> result = tabulate.tabulate(df['var1'], df['var2'])

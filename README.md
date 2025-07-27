@@ -1,15 +1,15 @@
-# Py-Stata-Commands
+# PyStataR
 
-[![Python Version](https://img.shields.io/pypi/pyversions/py-stata-commands)](https://pypi.org/project/py-stata-commands/)
-[![PyPI Version](https://img.shields.io/pypi/v/py-stata-commands)](https://pypi.org/project/py-stata-commands/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/pypi/dm/py-stata-commands)](https://pypi.org/project/py-stata-commands/)
+[![Python Version](https://img.shields.io/pypi/pyversions/pystatar)](https://pypi.org/project/pystatar/)
+[![PyPI Version](https://img.shields.io/pypi/v/pystatar)](https://pypi.org/project/pystatar/)
+[![License](https://img.shields.io/pypi/l/pystatar)](https://github.com/brycewang-stanford/PyStataR/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/pypi/dm/pystatar)](https://pypi.org/project/pystatar/)
 
 > **The Ultimate Python Toolkit for Academic Research - Bringing Stata's Power to Python** 🚀
 
 ## Project Vision & Goals
 
-**Py-Stata-Commands** aims to recreate and significantly enhance **the top 20 most frequently used Stata commands** in Python, transforming them into the most powerful and user-friendly statistical tools for academic research. Our goal is to not just replicate Stata's functionality, but to **expand and improve** upon it, leveraging Python's ecosystem to create superior research tools.
+**PyStataR** aims to recreate and significantly enhance **the top 20 most frequently used Stata commands** in Python, transforming them into the most powerful and user-friendly statistical tools for academic research. Our goal is to not just replicate Stata's functionality, but to **expand and improve** upon it, leveraging Python's ecosystem to create superior research tools.
 
 ### Why This Project Matters
 - **Bridge the Gap**: Seamless transition from Stata to Python for researchers
@@ -25,7 +25,7 @@
 🔄 **Coming Soon**: `summarize`, `describe`, `merge`, `reshape`, `collapse`, `keep/drop`, `generate`, `replace`, `sort`, `by`, `if/in`, `reg`, `logit`, `probit`, `ivregress`, `xtreg`
 
 **Want to see a specific command implemented?** 
--  [Create an issue](https://github.com/brycewang-stanford/Py-Stata-Commands/issues) to request a command
+-  [Create an issue](https://github.com/brycewang-stanford/PyStataR/issues) to request a command
 -  [Contribute](CONTRIBUTING.md) to help us complete this project faster
 - ⭐ Star this repo to show your support!
 
@@ -69,7 +69,7 @@
 ## Quick Installation
 
 ```bash
-pip install py-stata-commands
+pip install pystatar
 ```
 
 ## Comprehensive Usage Examples
@@ -81,7 +81,8 @@ The `tabulate` module provides comprehensive frequency analysis and cross-tabula
 #### Basic One-way Tabulation
 ```python
 import pandas as pd
-from py_stata_commands import tabulate
+```python
+from pystatar import tabulate
 
 # Create sample dataset
 df = pd.DataFrame({
@@ -143,7 +144,7 @@ The `egen` module provides powerful data manipulation functions that extend Stat
 
 #### Ranking and Percentile Functions
 ```python
-from py_stata_commands import egen
+from pystatar import egen
 
 # Advanced ranking with tie-breaking options
 df['income_rank'] = egen.rank(df['income'], method='average')  # Handle ties
@@ -202,7 +203,7 @@ The `reghdfe` module provides state-of-the-art estimation for linear models with
 
 #### Basic Fixed Effects Regression
 ```python
-from py_stata_commands import reghdfe
+from pystatar import reghdfe
 
 # Create panel dataset
 np.random.seed(42)
@@ -280,7 +281,7 @@ The `winsor2` module provides comprehensive outlier detection and treatment meth
 
 #### Basic Winsorizing
 ```python
-from py_stata_commands import winsor2
+from pystatar import winsor2
 
 # Create dataset with outliers
 outlier_df = pd.DataFrame({
@@ -378,7 +379,7 @@ print(f"Percentile method detected {outlier_df['extreme_outlier'].sum()} outlier
 ## Project Structure
 
 ```
-py_stata_commands/
+pystatar/
 ├── __init__.py              # Main package initialization
 ├── tabulate/               # Cross-tabulation module
 │   ├── __init__.py
@@ -439,7 +440,7 @@ Help us implement the remaining **16 high-priority commands**:
 
 ### How to Contribute
 
-1. ** Request a Command**: [Open an issue](https://github.com/brycewang-stanford/Py-Stata-Commands/issues/new) with the command you need
+1. **Request a Command**: [Open an issue](https://github.com/brycewang-stanford/PyStataR/issues/new) with the command you need
 2. ** Implement a Command**: Check our [contribution guidelines](CONTRIBUTING.md) and submit a PR
 3. ** Report Bugs**: Help us improve existing functionality
 4. ** Improve Documentation**: Add examples, tutorials, or clarifications
@@ -453,14 +454,14 @@ We welcome partnerships with universities and research institutions. If you're i
 
 ## Community & Support
 
-- ** Documentation**: [https://py-stata-commands.readthedocs.io](docs/)
-- ** Discussions**: [GitHub Discussions](https://github.com/brycewang-stanford/Py-Stata-Commands/discussions)
-- ** Issues**: [Bug Reports & Feature Requests](https://github.com/brycewang-stanford/Py-Stata-Commands/issues)
+- **Documentation**: [https://pystatar.readthedocs.io](docs/)
+- **Discussions**: [GitHub Discussions](https://github.com/brycewang-stanford/PyStataR/discussions)
+- **Issues**: [Bug Reports & Feature Requests](https://github.com/brycewang-stanford/PyStataR/issues)
 - ** Email**: brycew6m@stanford.edu for academic collaborations
 
 ## Comparison with Stata
 
-| Feature | Stata | Py-Stata-Commands | Advantage |
+| Feature | Stata | PyStataR | Advantage |
 |---------|-------|-------------------|-----------|
 | **Speed** | Base performance | 2-10x faster* | Vectorized operations |
 | **Memory** | Limited by system | Efficient pandas backend | Better large dataset handling |
@@ -502,10 +503,10 @@ This package builds upon the excellent work of:
 
 ## 📈 Project Statistics
 
-[![GitHub stars](https://img.shields.io/github/stars/brycewang-stanford/Py-Stata-Commands?style=social)](https://github.com/brycewang-stanford/Py-Stata-Commands/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/brycewang-stanford/Py-Stata-Commands?style=social)](https://github.com/brycewang-stanford/Py-Stata-Commands/network)
-[![GitHub issues](https://img.shields.io/github/issues/brycewang-stanford/Py-Stata-Commands)](https://github.com/brycewang-stanford/Py-Stata-Commands/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/brycewang-stanford/Py-Stata-Commands)](https://github.com/brycewang-stanford/Py-Stata-Commands/pulls)
+[![GitHub stars](https://img.shields.io/github/stars/brycewang-stanford/PyStataR?style=social)](https://github.com/brycewang-stanford/PyStataR/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/brycewang-stanford/PyStataR?style=social)](https://github.com/brycewang-stanford/PyStataR/network)
+[![GitHub issues](https://img.shields.io/github/issues/brycewang-stanford/PyStataR)](https://github.com/brycewang-stanford/PyStataR/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/brycewang-stanford/PyStataR)](https://github.com/brycewang-stanford/PyStataR/pulls)
 
 ##  Contact & Collaboration
 

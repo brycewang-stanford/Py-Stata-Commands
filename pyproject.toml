@@ -3,8 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "py-stata-commands"
-version = "0.1.0"
+name = "pystatar"
 description = "Comprehensive Python package providing Stata-equivalent commands for pandas DataFrames"
 readme = "README.md"
 license = {text = "MIT"}
@@ -66,18 +65,18 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/brycewang-stanford/Py-Stata-Commands"
-Repository = "https://github.com/brycewang-stanford/Py-Stata-Commands"
-Documentation = "https://github.com/brycewang-stanford/Py-Stata-Commands/docs"
-"Bug Tracker" = "https://github.com/brycewang-stanford/Py-Stata-Commands/issues"
+Homepage = "https://github.com/brycewang-stanford/PyStataR"
+Repository = "https://github.com/brycewang-stanford/PyStataR"
+Documentation = "https://github.com/brycewang-stanford/PyStataR/docs"
+"Bug Tracker" = "https://github.com/brycewang-stanford/PyStataR/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["py_stata_commands*"]
+include = ["pystatar*"]
 exclude = ["tests*", "docs*", "examples*"]
 
 [tool.setuptools.package-data]
-py_stata_commands = ["*.txt", "*.md"]
+pystatar = ["*.txt", "*.md"]
 
 [tool.black]
 line-length = 88
@@ -102,7 +101,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["py_stata_commands"]
+known_first_party = ["pystatar"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -116,7 +115,7 @@ filterwarnings = [
 ]
 
 [tool.coverage.run]
-source = ["py_stata_commands"]
+source = ["pystatar"]
 omit = [
     "*/tests/*",
     "*/test_*",

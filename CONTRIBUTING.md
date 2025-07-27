@@ -1,6 +1,6 @@
-# Contributing to Py-Stata-Commands
+# Contributing to PyStataR
 
-We love your input! We want to make contributing to Py-Stata-Commands as easy and transparent as possible, whether it's:
+We love your input! We want to make contributing to PyStataR as easy and transparent as possible, whether it's:
 
 - Reporting a bug
 - Discussing the current state of the code
@@ -23,8 +23,8 @@ We use GitHub to host code, to track issues and feature requests, as well as acc
 
 ```bash
 # Clone your fork
-git clone https://github.com/yourusername/Py-Stata-Commands.git
-cd Py-Stata-Commands
+git clone https://github.com/yourusername/PyStataR.git
+cd PyStataR
 
 # Create virtual environment
 python -m venv venv
@@ -47,12 +47,11 @@ We use several tools to maintain code quality:
 - **mypy** for type checking
 
 Run all checks:
-```bash
-black py_stata_commands tests
-isort py_stata_commands tests
-flake8 py_stata_commands tests
-mypy py_stata_commands
-```
+# Format code
+black pystatar tests
+isort pystatar tests
+flake8 pystatar tests
+mypy pystatar
 
 ## Testing
 
@@ -62,8 +61,8 @@ We use pytest for testing. Run tests with:
 # Run all tests
 pytest
 
-# Run tests with coverage
-pytest --cov=py_stata_commands
+# Test with coverage
+pytest --cov=pystatar
 
 # Run specific test file
 pytest tests/test_tabulate.py

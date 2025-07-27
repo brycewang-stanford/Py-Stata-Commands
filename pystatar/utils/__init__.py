@@ -1,5 +1,5 @@
 """
-Shared utilities for Py-Stata-Commands package.
+Shared utilities for PyStataR package.
 """
 
 from .common import *

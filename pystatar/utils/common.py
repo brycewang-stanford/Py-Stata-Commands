@@ -1,5 +1,5 @@
 """
-Common utilities shared across all Py-Stata-Commands modules.
+Common utilities shared across all PyStataR modules.
 
 This module provides shared functionality used by tabulate, egen, reghdfe, and winsor2.
 """

@@ -1,12 +1,12 @@
 """
-Py-Stata-Commands Examples
+PyStataR Examples
 
-This file demonstrates the basic usage of all four modules in the Py-Stata-Commands package.
+This file demonstrates the basic usage of all four modules in the PyStataR package.
 """
 
 import pandas as pd
 import numpy as np
-from py_stata_commands import tabulate, egen, reghdfe, winsor2
+from pystatar import tabulate, egen, reghdfe, winsor2
 
 # Create sample dataset
 np.random.seed(42)
@@ -28,7 +28,7 @@ data = pd.DataFrame({
 data['wage'] = data['wage'] + data['experience'] * 500 + np.where(data['education'] == 'Graduate', 20000, 0)
 data['sales'] = data['sales'] + data['firm_id'] * 100
 
-print("=== Py-Stata-Commands Examples ===\n")
+print("=== PyStataR Examples ===\n")
 
 # ==========================================
 # 1. TABULATE Examples

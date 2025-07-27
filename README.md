@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/pypi/l/pystatar)](https://github.com/brycewang-stanford/PyStataR/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/pypi/dm/pystatar)](https://pypi.org/project/pystatar/)
 
-> **The Ultimate Python Toolkit for Academic Research - Bringing Stata's Power to Python** 🚀
+> **The Ultimate Python Toolkit for Academic Research - Bringing Stata & R's Power to Python** 🚀
 
 ## Project Vision & Goals
 

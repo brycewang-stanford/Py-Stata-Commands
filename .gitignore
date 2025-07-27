@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+开发记录.md
+INTEGRATION_SUMMARY.md 
+kaifajilu.md
+
 # C extensions
 *.so
 

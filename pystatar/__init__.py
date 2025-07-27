@@ -30,7 +30,7 @@ Examples:
 >>> result = winsor2.winsor2(df, ['income'], cuts=(1, 99))
 """
 
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 __author__ = "Bryce Wang"
 __email__ = "brycew6m@stanford.edu"
 __license__ = "MIT"

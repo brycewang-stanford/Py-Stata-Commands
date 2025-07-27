@@ -4,6 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pystatar"
+version = "0.0.1"
 description = "Comprehensive Python package providing Stata-equivalent commands for pandas DataFrames"
 readme = "README.md"
 license = "MIT"
@@ -39,7 +40,6 @@ dependencies = [
     "scipy>=1.7.0",
     "pyhdfe>=0.1.0",
 ]
-dynamic = ["version"]
 
 [project.optional-dependencies]
 dev = [

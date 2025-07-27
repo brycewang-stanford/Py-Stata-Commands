@@ -6,6 +6,7 @@ __pycache__/
 开发记录.md
 INTEGRATION_SUMMARY.md 
 kaifajilu.md
+PYPI_RELEASE_GUIDE.md
 
 # C extensions
 *.so

@@ -30,26 +30,59 @@ Examples:
 >>> result = winsor2.winsor2(df, ['income'], cuts=(1, 99))
 """
 
-__version__ = "0.1.0"
+__version__ = "0.0.1"
 __author__ = "Bryce Wang"
 __email__ = "brycew6m@stanford.edu"
 __license__ = "MIT"
 
 # Import main modules for convenient access
-try:
-    from . import tabulate
-    from . import egen  
-    from . import reghdfe
-    from . import winsor2
-    from . import utils
-except ImportError:
-    # Handle relative import issues during development
-    pass
+from . import tabulate as tabulate_module
+from . import egen as egen_module
+from . import reghdfe as reghdfe_module
+from . import winsor2 as winsor2_module
+from . import utils
+
+# Import key functions for direct access
+from .tabulate import tabulate, oneway, twoway
+from .egen import (
+    rank, rowmean, rowtotal, rowmax, rowmin, rowcount, rowsd,
+    tag, count, mean, sum, max, min, sd, seq, group, pc, iqr
+)
+from .reghdfe import reghdfe
+from .winsor2 import winsor2
 
 __all__ = [
+    # Modules
+    'tabulate_module',
+    'egen_module', 
+    'reghdfe_module',
+    'winsor2_module',
+    'utils',
+    # Tabulate functions
     'tabulate',
-    'egen', 
+    'oneway',
+    'twoway',
+    # Egen functions
+    'rank',
+    'rowmean',
+    'rowtotal',
+    'rowmax',
+    'rowmin',
+    'rowcount',
+    'rowsd',
+    'tag',
+    'count',
+    'mean',
+    'sum',
+    'max',
+    'min',
+    'sd',
+    'seq',
+    'group',
+    'pc',
+    'iqr',
+    # Reghdfe functions
     'reghdfe',
-    'winsor2',
-    'utils'
+    # Winsor2 functions
+    'winsor2'
 ]

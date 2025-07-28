@@ -6,7 +6,7 @@
 [![Downloads](https://img.shields.io/pypi/dm/pystatar)](https://pypi.org/project/pystatar/)
 
 > **The Ultimate Python Toolkit for Academic Research - Bringing Stata & R's Power to Python** 🚀
-
+> **集成 Stata 和 R 语言的最高频使用工具，让社科学术和统计研究，全面拥抱 Python/AI 为主流的开源社区**
 ## Project Vision & Goals
 
 **PyStataR** aims to recreate and significantly enhance **the top 20 most frequently used Stata commands** in Python, transforming them into the most powerful and user-friendly statistical tools for academic research. Our goal is to not just replicate Stata's functionality, but to **expand and improve** upon it, leveraging Python's ecosystem to create superior research tools.
@@ -17,7 +17,7 @@
 - **Modern Research Tools**: Built for today's data science and research needs
 - **Community-Driven**: Open source development with academic researchers in mind
 
-### Target Commands (20 Most Used in Academic Research)
+### Target Stata Commands (20 Most Used in Academic Research)
 ✅ **tabulate** - Cross-tabulation and frequency analysis  
 ✅ **egen** - Extended data generation and manipulation  
 ✅ **reghdfe** - High-dimensional fixed effects regression  

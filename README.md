@@ -5,29 +5,35 @@
 [![License](https://img.shields.io/pypi/l/pystatar)](https://github.com/brycewang-stanford/PyStataR/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/pypi/dm/pystatar)](https://pypi.org/project/pystatar/)
 
-> **The Ultimate Python Toolkit for Academic Research - Bringing Stata & R's Power to Python** 🚀  
+> **The Ultimate Python Toolkit for Academic Research - Bringing Stata & R's Power to Python**  
 > **集成 Stata 和 R 语言的最高频使用工具，让社科学术和统计研究，全面拥抱 Python/AI 为主流的开源社区**
 ## Project Vision & Goals
 
-**PyStataR** aims to recreate and significantly enhance **the top and most frequently used Stata commands** in Python, transforming them into the most powerful and user-friendly statistical tools for academic research. Our goal is to not just replicate Stata and R's functionality, but to **expand and improve** upon it, leveraging Python's ecosystem to create superior research tools.
+**PyStataR** serves as a unified interface to the most powerful and frequently used Stata-equivalent packages in Python. Instead of reinventing the wheel, we provide seamless integration of three mature PyPI packages under one convenient interface.
 
 - **Seamless Integration**: Three proven PyPI packages unified under one interface
-- **Familiar Workflow**: Stata-like syntax and functionality for Python users
+- **Familiar Workflow**: Stata-like syntax and functionality for Python users  
 - **Academic Focus**: Built specifically for research and statistical analysis needs
 - **Open Source**: Free and accessible to all researchers worldwide
+- **No Reinvention**: Leverages existing, mature packages rather than duplicating functionality
 
 
 ### Why This Project Matters
 - **Bridge the Gap**: Seamless transition from Stata to Python for researchers
-- **Enhanced Functionality**: Each command will be significantly expanded beyond Stata's original capabilities
-- **Modern Research Tools**: Built for today's data science and research needs
+- **Unified Interface**: One package, multiple powerful tools - no need to learn different APIs
+- **Mature Foundation**: Built on battle-tested PyPI packages with years of development
 - **Community-Driven**: Open source development with academic researchers in mind
+- **No Maintenance Overhead**: Leverages existing packages rather than maintaining duplicate code
 
 ### Target Stata Commands (The Most Used in Academic Research)
 ✅ **pyegen** - Extended data generation and manipulation (Stata's `egen`)  
 ✅ **pywinsor2** - Data winsorizing and trimming (Stata's `winsor2`)  
 ✅ **pdtab** - Cross-tabulation and frequency analysis (Stata's `tabulate`)
-🔄 **Coming Soon**: `summarize`, `describe`, `merge`, `reshape`, `collapse`, `keep/drop`, `generate`, `replace`, `sort`, `by`, `if/in`, `reg`, `logit`, `probit`, `ivregress`, `xtreg`
+
+**Based on mature PyPI packages**:
+- [pyegen](https://pypi.org/project/pyegen/) - version 0.2.4+
+- [pywinsor2](https://pypi.org/project/pywinsor2/) - version 0.4.3+  
+- [pdtab](https://pypi.org/project/pdtab/) - version 0.1.1+
 
 **Want to contribute or request features?** 
 -  [Create an issue](https://github.com/brycewang-stanford/PyStataR/issues) to request functionality
@@ -36,17 +42,17 @@
 ---- 
 ## Core Modules Overview
 ### **pyegen** - Extended Data Generation and Manipulation  
-- **Beyond Stata**: Advanced ranking algorithms, robust statistical functions, and vectorized operations
+- **Built on**: [pyegen v0.2.4](https://pypi.org/project/pyegen/) PyPI package
 - **Key Features**: Group operations, ranking with tie-breaking, row statistics, percentile calculations
 - **Use Cases**: Data preprocessing, feature engineering, panel data construction
 
 ### **pdtab** - Advanced Cross-tabulation and Frequency Analysis
-- **Beyond Stata**: Enhanced statistical tests, comprehensive output formatting, and publication-ready results
-- **Key Features**: Chi-square tests, Fisher's exact test, Cramér's V, multiple output formats
+- **Built on**: [pdtab v0.1.1](https://pypi.org/project/pdtab/) PyPI package  
+- **Key Features**: One-way and two-way tables, statistical tests, comprehensive output formatting
 - **Use Cases**: Survey analysis, categorical data exploration, market research
 
 ### **pywinsor2** - Advanced Outlier Detection and Treatment
-- **Beyond Stata**: Multiple detection methods, group-specific treatment, and comprehensive diagnostics
+- **Built on**: [pywinsor2 v0.4.3](https://pypi.org/project/pywinsor2/) PyPI package
 - **Key Features**: IQR-based detection, percentile methods, group-wise operations, flexible trimming
 - **Use Cases**: Data cleaning, outlier analysis, robust statistical modeling
 
@@ -90,7 +96,7 @@ from pystatar import rank, rowmean, winsor2, pdtab_table
 
 ### `pdtab` - Advanced Cross-tabulation
 
-The `pdtab` module provides comprehensive frequency analysis and cross-tabulation capabilities, replicating and enhancing Stata's tabulate functionality.
+The `pdtab` module provides comprehensive frequency analysis and cross-tabulation capabilities.
 
 #### Basic Usage Examples
 ```python
@@ -108,23 +114,16 @@ df = pd.DataFrame({
 })
 
 # One-way frequency table
-result = pdtab.oneway(df, 'education')
+result = pdtab.tab1('education', df)
 print(result)
 
-# Two-way cross-tabulation with statistical tests
-result = pdtab.twoway(
-    df, 
-    'gender', 'education',
-    chi2=True,           # Chi-square test
-    exact=True,          # Fisher's exact test (for 2x2 tables)
-    all_stats=True       # All available statistics
-)
+# Two-way cross-tabulation
+result = pdtab.tab2('gender', 'education', df)
+print(result)
 
-# Access different components
-print("Cross-tabulation Table:")
-print(result.table)
-print(f"\nChi-square p-value: {result.stats_results['chi2']['p_value']:.4f}")
-print(f"Cramér's V: {result.stats_results['cramers_v']['value']:.4f}")
+# Using convenience function
+result = pdtab.tabulate('gender', 'education', df)
+print(result)
 ```
 ### `pyegen` - Extended Data Generation
 
@@ -328,28 +327,24 @@ print(f"Percentile method detected {outlier_df['extreme_outlier'].sum()} outlier
 
 ```
 pystatar/
-├── __init__.py              # Main package initialization with unified interface
-├── pdtab/                  # Cross-tabulation and contingency tables
-│   ├── __init__.py
-│   ├── core.py             # Main tabulation functionality
-│   └── _version.py
-├── egen/                   # Extended generation functions
-│   ├── __init__.py
-│   ├── core.py             # Core egen functions
-│   └── _version.py
-├── winsor2/               # Outlier treatment and winsorizing
-│   ├── __init__.py
-│   ├── core.py             # Winsorizing and trimming functions
-│   └── utils.py            # Supporting utilities
-├── utils/                 # Shared utilities
-│   ├── __init__.py
-│   └── common.py          # Common helper functions
-└── tests/                 # Comprehensive test suite
+├── __init__.py              # Main package with unified interface to:
+│                           #   - pyegen (v0.2.4+)
+│                           #   - pywinsor2 (v0.4.3+)
+│                           #   - pdtab (v0.1.1+)
+└── tests/                  # Integration tests
     ├── test_basic.py       # Basic integration tests
-    ├── test_pdtab.py       # pdtab module tests
-    ├── test_egen.py        # egen module tests
-    └── test_winsor2.py     # winsor2 module tests
+    ├── test_egen.py        # pyegen functionality tests
+    ├── test_pdtab.py       # pdtab functionality tests
+    └── test_winsor2.py     # pywinsor2 functionality tests
 ```
+
+### Why This Architecture?
+
+- **No Code Duplication**: We don't reinvent the wheel - we use proven packages
+- **Easier Maintenance**: Updates and bug fixes come from the original package maintainers
+- **Better Reliability**: Built on packages with existing user bases and testing
+- **Unified Interface**: One import gives you access to all functionality
+- **Future-Proof**: Automatically benefits from improvements in underlying packages
 
 ## Key Features
 
@@ -385,10 +380,10 @@ Help us implement the remaining **16 high-priority commands**:
 ### How to Contribute
 
 1. **Request a Command**: [Open an issue](https://github.com/brycewang-stanford/PyStataR/issues/new) with the command you need
-2. ** Implement a Command**: Check our [contribution guidelines](CONTRIBUTING.md) and submit a PR
-3. ** Report Bugs**: Help us improve existing functionality
-4. ** Improve Documentation**: Add examples, tutorials, or clarifications
-5. ** Spread the Word**: Star the repo and share with fellow researchers
+2. **Implement a Command**: Check our [contribution guidelines](CONTRIBUTING.md) and submit a PR
+3. **Report Bugs**: Help us improve existing functionality
+4. **Improve Documentation**: Add examples, tutorials, or clarifications
+5. **Spread the Word**: Star the repo and share with fellow researchers
 
 ###  Recognition
 All contributors will be recognized in our documentation and release notes. Major contributors will be listed as co-authors on any academic publications about this project.
@@ -401,7 +396,7 @@ We welcome partnerships with universities and research institutions. If you're i
 - **Documentation**: [https://pystatar.readthedocs.io](docs/)
 - **Discussions**: [GitHub Discussions](https://github.com/brycewang-stanford/PyStataR/discussions)
 - **Issues**: [Bug Reports & Feature Requests](https://github.com/brycewang-stanford/PyStataR/issues)
-- ** Email**: brycew6m@stanford.edu for academic collaborations
+- **Email**: brycew6m@stanford.edu for academic collaborations
 
 ## Comparison with Stata
 

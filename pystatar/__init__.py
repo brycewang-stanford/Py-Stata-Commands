@@ -7,27 +7,29 @@ for researchers and data analysts.
 
 Modules:
 --------
-- tabulate: Cross-tabulation and frequency analysis (Stata's `tabulate`)
-- egen: Extended data generation functions (Stata's `egen`)  
-- reghdfe: High-dimensional fixed effects regression (Stata's `reghdfe`)
-- winsor2: Data winsorizing and trimming (Stata's `winsor2`)
+- pyegen: Extended data generation functions (Stata's `egen`)
+- pywinsor2: Data winsorizing and trimming (Stata's `winsor2`)  
+- pdtab: Cross-tabulation and frequency analysis (Stata's `tabulate`)
 
 Examples:
 ---------
 >>> import pandas as pd
->>> from pystatar import tabulate, egen, reghdfe, winsor2
+>>> from pystatar import pyegen, pywinsor2, pdtab
 
 >>> # Cross-tabulation
->>> result = tabulate.tabulate(df['var1'], df['var2'])
+>>> result = pdtab.tabulate(df, 'var1', 'var2')
 
 >>> # Data generation
->>> df['rank_var'] = egen.rank(df['income'])
-
->>> # Fixed effects regression
->>> result = reghdfe.reghdfe(df, 'wage', ['experience'], absorb=['firm_id'])
+>>> df['rank_var'] = pyegen.rank(df['income'])
 
 >>> # Winsorizing
->>> result = winsor2.winsor2(df, ['income'], cuts=(1, 99))
+>>> result = pywinsor2.winsor2(df, ['income'], cuts=(1, 99))
+
+Direct access examples:
+-----------------------
+>>> from pystatar.pyegen import rank, rowmean
+>>> from pystatar.pdtab import tabulate
+>>> from pystatar.pywinsor2 import winsor2
 """
 
 __version__ = "0.1.0"
@@ -35,33 +37,28 @@ __author__ = "Bryce Wang"
 __email__ = "brycew6m@stanford.edu"
 __license__ = "MIT"
 
-# Import main modules for convenient access
-from . import tabulate as tabulate_module
-from . import egen as egen_module
-from . import reghdfe as reghdfe_module
-from . import winsor2 as winsor2_module
+# Import modules using namespace package pattern
+from . import egen as pyegen
+from . import winsor2 as pywinsor2
+from . import pdtab
 from . import utils
 
-# Import key functions for direct access
-from .tabulate import tabulate, oneway, twoway
+# Import key functions for direct access (optional convenience)
 from .egen import (
     rank, rowmean, rowtotal, rowmax, rowmin, rowcount, rowsd,
     tag, count, mean, sum, max, min, sd, seq, group, pc, iqr
 )
-from .reghdfe import reghdfe
+from .pdtab import tabulate, oneway, twoway
 from .winsor2 import winsor2
 
 __all__ = [
-    # Modules
-    'tabulate_module',
-    'egen_module', 
-    'reghdfe_module',
-    'winsor2_module',
+    # Main modules (recommended usage)
+    'pyegen',
+    'pywinsor2', 
+    'pdtab',
     'utils',
-    # Tabulate functions
-    'tabulate',
-    'oneway',
-    'twoway',
+    
+    # Direct function access (convenience)
     # Egen functions
     'rank',
     'rowmean',
@@ -81,8 +78,12 @@ __all__ = [
     'group',
     'pc',
     'iqr',
-    # Reghdfe functions
-    'reghdfe',
-    # Winsor2 functions
+    
+    # PDTab functions
+    'tabulate',
+    'oneway',
+    'twoway',
+    
+    # Winsor2 functions  
     'winsor2'
 ]

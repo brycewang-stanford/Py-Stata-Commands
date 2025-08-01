@@ -1,8 +1,9 @@
 """
 pywinsor2: Python implementation of Stata's winsor2 command
 
-This package provides tools for winsorizing and trimming data,
+This module provides tools for winsorizing and trimming data,
 equivalent to Stata's winsor2 command functionality.
+Part of the PyStataR package.
 """
 
 __version__ = "0.1.0"

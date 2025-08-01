@@ -514,7 +514,6 @@ This package builds upon the excellent work of:
 
 -  **Email**: brycew6m@stanford.edu  
 -  **GitHub**: [@brycewang-stanford](https://github.com/brycewang-stanford)
--  **Academic**: Stanford Graduate School of Business
 -  **LinkedIn**: [Connect with me](https://linkedin.com/in/brycewang)
 
 ### Academic Partnerships Welcome!

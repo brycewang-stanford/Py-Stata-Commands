@@ -1,8 +1,9 @@
 """
 PyEgen: Python implementation of Stata's egen command
 
-This package provides Stata-style data manipulation functions for pandas DataFrames,
+This module provides Stata-style data manipulation functions for pandas DataFrames,
 making it easier for researchers to transition from Stata to Python.
+Part of the PyStataR package.
 """
 
 from .core import (

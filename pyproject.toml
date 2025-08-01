@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pystatar"
 version = "0.1.0"
-description = "Comprehensive Python package providing Stata-equivalent commands for pandas DataFrames"
+description = "Comprehensive Python package providing Stata-equivalent commands for pandas DataFrames - includes pyegen, pywinsor2, and pdtab modules"
 readme = "README.md"
 license = "MIT"
 authors = [
@@ -16,8 +16,8 @@ maintainers = [
 ]
 keywords = [
     "stata", "pandas", "econometrics", "statistics", "data-analysis",
-    "tabulate", "egen", "reghdfe", "winsor", "cross-tabulation",
-    "fixed-effects", "panel-data", "regression"
+    "tabulate", "egen", "winsor", "cross-tabulation", "pyegen", "pywinsor2", "pdtab",
+    "data-manipulation", "winsorizing", "frequency-analysis"
 ]
 classifiers = [
     "Development Status :: 4 - Beta",

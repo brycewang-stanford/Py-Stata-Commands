@@ -6,7 +6,7 @@ equivalent to Stata's winsor2 command functionality.
 Part of the PyStataR package.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "Bryce Wang"
 __email__ = "brycew6m@stanford.edu"
 

@@ -5,6 +5,8 @@ This package brings the familiar functionality of Stata's most essential data ma
 and statistical commands to Python, making the transition from Stata to Python seamless 
 for researchers and data analysts.
 
+Version: 0.2.0
+
 Modules:
 --------
 - pyegen: Extended data generation functions (Stata's `egen`)
@@ -32,7 +34,7 @@ Direct access examples:
 >>> from pystatar.pywinsor2 import winsor2
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "Bryce Wang"
 __email__ = "brycew6m@stanford.edu"
 __license__ = "MIT"

@@ -7,6 +7,14 @@
 
 > **The Ultimate Python Toolkit for Academic Research - Bringing Stata & R's Power to Python**  
 > **集成 Stata 和 R 语言的最高频使用工具，让社科学术和统计研究，全面拥抱 Python/AI 为主流的开源社区**
+
+## 🆕 What's New in v0.3.0
+
+✨ **Enhanced Architecture**: Improved unified interface with better error handling and documentation  
+🔧 **Cleaner Codebase**: Removed duplicate code and streamlined module structure  
+📚 **Better Documentation**: Enhanced examples and clearer API documentation  
+🚀 **Performance**: Optimized imports and reduced overhead for faster loading  
+
 ## Project Vision & Goals
 
 **PyStataR** serves as a unified interface to the most powerful and frequently used Stata-equivalent packages in Python. Instead of reinventing the wheel, we provide seamless integration of three mature PyPI packages under one convenient interface.

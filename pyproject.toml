@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pystatar"
-version = "0.2.0"
-description = "PyStataR aims to recreate and significantly enhance the top 20 most frequently used Stata commands in Python, transforming them into the most powerful and user-friendly statistical tools for academic research. Our goal is to not just replicate Stata's functionality, but to expand and improve upon it, leveraging Python's ecosystem to create superior research tools."
+version = "0.3.0"
+description = "PyStataR aims to recreate and significantly enhance the top and most frequently used Stata commands in Python, transforming them into the most powerful and user-friendly statistical tools for academic research. Our goal is to not just replicate Stata's functionality, but to expand and improve upon it, leveraging Python's ecosystem to create superior research tools."
 readme = "README.md"
 license = "MIT"
 authors = [

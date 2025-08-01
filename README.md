@@ -528,3 +528,9 @@ This package builds upon the excellent work of:
 ### ⭐ **Love this project? Give it a star and help us reach more researchers!** ⭐
 
 **Together, we're building the future of academic research in Python** 
+
+### Disclaimer
+The PyStataR tool is not affiliated with, endorsed by, or in any way associated with Stata or StataCorp LLC.
+“Stata” is a registered trademark of StataCorp LLC. Any mention of it in this project is solely for academic reference and comparative functionality purposes.
+This tool is independently developed by the author and does not copy or reuse any part of the Stata source code. It is inspired by the design of Stata's analytical features to support similar workflows in Python.
+For any trademark or copyright concerns, please contact the author for resolution.

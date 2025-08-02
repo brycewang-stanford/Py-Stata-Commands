@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pystatar"
-version = "0.3.1"
+version = "0.4.0"
 description = "PyStataR aims to recreate and significantly enhance the top and most frequently used Stata commands in Python, transforming them into the most powerful and user-friendly statistical tools for academic research. Our goal is to not just replicate Stata's functionality, but to expand and improve upon it, leveraging Python's ecosystem to create superior research tools."
 readme = "README.md"
 license = "MIT"
@@ -17,7 +17,8 @@ maintainers = [
 keywords = [
     "stata", "pandas", "econometrics", "statistics", "data-analysis",
     "tabulate", "egen", "winsor", "cross-tabulation", "pyegen", "pywinsor2", "pdtab",
-    "data-manipulation", "winsorizing", "frequency-analysis"
+    "data-manipulation", "winsorizing", "frequency-analysis", "outreg", "pyoutreg",
+    "regression-tables", "outreg2", "model-output", "research-tools"
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -42,6 +43,7 @@ dependencies = [
     "pyegen>=0.2.0",
     "pywinsor2>=0.4.0", 
     "pdtab>=0.1.0",
+    "pyoutreg>=0.1.0",
 ]
 
 [project.optional-dependencies]

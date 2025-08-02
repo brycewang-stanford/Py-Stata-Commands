@@ -1,6 +1,10 @@
-# PyStataR
+# PyStataR## 🆕 What's New in v0.4.0
 
-[![Python Version](https://img.shields.io/pypi/pyversions/pystatar)](https://pypi.org/project/pystatar/)
+✨ **New Integration**: Added pyoutreg for professional regression output tables (Stata's `outreg2` equivalent)  
+📊 **Enhanced Functionality**: Comprehensive regression result export to Excel/Word with publication-quality formatting  
+🔧 **Four-Package Integration**: Now includes pyegen, pywinsor2, pdtab, and pyoutreg under unified interface  
+📚 **Extended Documentation**: Complete examples for regression output and model comparison  
+🚀 **Research-Ready**: End-to-end workflow from data processing to publication tablesython Version](https://img.shields.io/pypi/pyversions/pystatar)](https://pypi.org/project/pystatar/)
 [![PyPI Version](https://img.shields.io/pypi/v/pystatar)](https://pypi.org/project/pystatar/)
 [![License](https://img.shields.io/pypi/l/pystatar)](https://github.com/brycewang-stanford/PyStataR/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/pypi/dm/pystatar)](https://pypi.org/project/pystatar/)
@@ -17,9 +21,9 @@
 
 ## Project Vision & Goals
 
-**PyStataR** serves as a unified interface to the most powerful and frequently used Stata and R-equivalent packages in Python. Instead of reinventing the wheel, we provide seamless integration of three mature PyPI packages under one convenient interface.
+**PyStataR** serves as a unified interface to the most powerful and frequently used Stata-equivalent packages in Python. Instead of reinventing the wheel, we provide seamless integration of four mature PyPI packages under one convenient interface.
 
-- **Seamless Integration**: Three proven PyPI packages unified under one interface
+- **Seamless Integration**: Four proven PyPI packages unified under one interface
 - **Familiar Workflow**: Stata-like syntax and functionality for Python users  
 - **Academic Focus**: Built specifically for research and statistical analysis needs
 - **Open Source**: Free and accessible to all researchers worldwide
@@ -36,12 +40,14 @@
 ### Target Stata Commands (The Most Used in Academic Research)
 ✅ **pyegen** - Extended data generation and manipulation (Stata's `egen`)  
 ✅ **pywinsor2** - Data winsorizing and trimming (Stata's `winsor2`)  
-✅ **pdtab** - Cross-tabulation and frequency analysis (Stata's `tabulate`)
+✅ **pdtab** - Cross-tabulation and frequency analysis (Stata's `tabulate`)  
+✅ **pyoutreg** - Professional regression output tables (Stata's `outreg2`)
 
 **Based on mature PyPI packages**:
 - [pyegen](https://pypi.org/project/pyegen/) - version 0.2.4+
 - [pywinsor2](https://pypi.org/project/pywinsor2/) - version 0.4.3+  
 - [pdtab](https://pypi.org/project/pdtab/) - version 0.1.1+
+- [pyoutreg](https://pypi.org/project/pyoutreg/) - version 0.1.1+
 
 **Want to contribute or request features?** 
 -  [Create an issue](https://github.com/brycewang-stanford/PyStataR/issues) to request functionality
@@ -64,12 +70,17 @@
 - **Key Features**: IQR-based detection, percentile methods, group-wise operations, flexible trimming
 - **Use Cases**: Data cleaning, outlier analysis, robust statistical modeling
 
+### **pyoutreg** - Professional Regression Output Tables  
+- **Built on**: [pyoutreg v0.1.1](https://pypi.org/project/pyoutreg/) PyPI package
+- **Key Features**: Stata `outreg2` equivalent, Excel/Word export, model comparison, publication-quality formatting
+- **Use Cases**: Academic papers, research reports, model comparison tables, publication workflows
+
 ## Advanced Features & Performance
 
 ### Performance Optimizations
 - **Vectorized Operations**: All functions leverage NumPy and pandas for maximum speed
 - **Memory Efficiency**: Optimized for large datasets common in academic research
-- **Proven Reliability**: Built on three mature PyPI packages with extensive testing
+- **Proven Reliability**: Built on four mature PyPI packages with extensive testing
 - **Modular Design**: Use individual modules independently or together
 
 ### Research-Grade Features
@@ -90,14 +101,14 @@ pip install pystatar
 
 #### Method 1: Module-based Import (Recommended)
 ```python
-from pystatar import pyegen, pywinsor2, pdtab
+from pystatar import pyegen, pywinsor2, pdtab, pyoutreg
 
 # Each module maintains its independence and full functionality
 ```
 
 #### Method 2: Direct Function Import (Convenience)
 ```python
-from pystatar import rank, rowmean, winsor2, pdtab_table
+from pystatar import rank, rowmean, winsor2, tabulate, outreg
 
 # Direct access to key functions
 ```
@@ -331,6 +342,97 @@ print(f"IQR method detected {outlier_df['income_outlier'].sum()} outliers")
 print(f"Percentile method detected {outlier_df['extreme_outlier'].sum()} outliers")
 ```
 
+### `pyoutreg` - Professional Regression Output Tables
+
+The `pyoutreg` module provides Stata's `outreg2` equivalent functionality for exporting regression results to publication-quality tables.
+
+#### Basic Regression Output
+```python
+import pandas as pd
+import numpy as np
+import statsmodels.api as sm
+from pystatar import pyoutreg
+
+# Create sample dataset
+np.random.seed(42)
+n = 1000
+data = pd.DataFrame({
+    'y': np.random.normal(50, 10, n),
+    'x1': np.random.normal(0, 1, n),
+    'x2': np.random.normal(0, 1, n),
+    'x3': np.random.normal(0, 1, n),
+    'industry': np.random.choice(['Tech', 'Finance', 'Healthcare'], n)
+})
+
+# Add some realistic relationships
+data['y'] = 50 + 3*data['x1'] + 2*data['x2'] + np.random.normal(0, 5, n)
+
+# Run regression
+X = sm.add_constant(data[['x1', 'x2', 'x3']])
+model = sm.OLS(data['y'], X).fit()
+
+# Export to Excel (Stata outreg2 equivalent)
+pyoutreg.outreg(model, 'regression_results.xlsx', replace=True, 
+                ctitle='Model 1', title='My Research Results')
+print("Regression results exported to Excel!")
+```
+
+#### Multiple Model Comparison
+```python
+# Compare multiple models (like Stata's outreg2 append)
+model1 = sm.OLS(data['y'], sm.add_constant(data[['x1']])).fit()
+model2 = sm.OLS(data['y'], sm.add_constant(data[['x1', 'x2']])).fit()
+model3 = sm.OLS(data['y'], sm.add_constant(data[['x1', 'x2', 'x3']])).fit()
+
+# Export multiple models to same file
+pyoutreg.outreg(model1, 'comparison.xlsx', replace=True, ctitle='Model 1')
+pyoutreg.outreg(model2, 'comparison.xlsx', append=True, ctitle='Model 2')
+pyoutreg.outreg(model3, 'comparison.xlsx', append=True, ctitle='Model 3')
+
+# Or use the comparison function
+pyoutreg.outreg_compare([model1, model2, model3], 
+                       'model_comparison.xlsx',
+                       model_names=['Basic', 'Extended', 'Full Model'])
+```
+
+#### Summary Statistics Export
+```python
+# Export summary statistics (Stata's outreg2 sum)
+pyoutreg.outreg(data=data[['y', 'x1', 'x2', 'x3']], 
+                filename='summary_stats.xlsx',
+                sum_stats=True, 
+                replace=True,
+                title='Descriptive Statistics')
+
+# Grouped summary statistics
+pyoutreg.outreg(data=data, 
+                filename='summary_by_industry.xlsx',
+                sum_stats=True,
+                by='industry',
+                replace=True,
+                title='Statistics by Industry')
+```
+
+#### Advanced Output Formatting
+```python
+# Customize output format
+pyoutreg.outreg(model, 'formatted_results.xlsx',
+                replace=True,
+                dec=3,                    # 3 decimal places
+                bdec=4,                   # 4 decimal places for coefficients
+                keep=['x1', 'x2'],        # Only show x1 and x2
+                title='Publication Table',
+                addnote='Robust standard errors in parentheses',
+                font_size=12,
+                font_name='Arial')
+
+# Export to Word document
+pyoutreg.outreg(model, 'results.docx',
+                replace=True,
+                landscape=True,           # Landscape orientation
+                title='Research Results')
+```
+
 ## Project Structure
 
 ```
@@ -339,11 +441,13 @@ pystatar/
 │                           #   - pyegen (v0.2.4+)
 │                           #   - pywinsor2 (v0.4.3+)
 │                           #   - pdtab (v0.1.1+)
+│                           #   - pyoutreg (v0.1.1+)
 └── tests/                  # Integration tests
     ├── test_basic.py       # Basic integration tests
     ├── test_egen.py        # pyegen functionality tests
     ├── test_pdtab.py       # pdtab functionality tests
-    └── test_winsor2.py     # pywinsor2 functionality tests
+    ├── test_winsor2.py     # pywinsor2 functionality tests
+    └── test_outreg.py      # pyoutreg functionality tests
 ```
 
 ### Why This Architecture?
@@ -357,14 +461,15 @@ pystatar/
 ## Key Features
 
 - **Familiar Syntax**: Stata-like command structure and parameters
-- **Unified Interface**: Access three powerful modules (pdtab, pyegen, pywinsor2) through a single package
+- **Unified Interface**: Access four powerful modules (pdtab, pyegen, pywinsor2, pyoutreg) through a single package
 - **Namespace Design**: Maintains module independence while providing integrated functionality
 - **Pandas Integration**: Seamless integration with pandas DataFrames
 - **High Performance**: Optimized implementations using pandas and NumPy
-- **Comprehensive Coverage**: Cross-tabulation, data generation, and outlier treatment functions
+- **Comprehensive Coverage**: Cross-tabulation, data generation, outlier treatment, and regression output functions
 - **Statistical Rigor**: Proper statistical tests and robust calculations
-- **Flexible Output**: Multiple output formats and customization options
+- **Flexible Output**: Multiple output formats (Excel, Word, DataFrame) and customization options
 - **Missing Value Handling**: Configurable treatment of missing data
+- **Publication Ready**: Professional table formatting for academic papers and reports
 
 ## Documentation
 
@@ -373,6 +478,7 @@ Each module comes with comprehensive documentation and examples:
 - [**pdtab Documentation**](docs/pdtab.md) - Cross-tabulation and contingency table analysis
 - [**pyegen Documentation**](docs/pyegen.md) - Extended data generation functions
 - [**pywinsor2 Documentation**](docs/pywinsor2.md) - Data winsorizing and outlier treatment
+- [**pyoutreg Documentation**](docs/pyoutreg.md) - Professional regression output tables
 
 ## Contributing to the Project
 

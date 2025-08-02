@@ -16,11 +16,12 @@ class TestBasicFunctionality:
         assert hasattr(pystatar, 'pyegen')
         assert hasattr(pystatar, 'pywinsor2')
         assert hasattr(pystatar, 'pdtab')
-        assert pystatar.__version__ == "0.3.1"
+        assert hasattr(pystatar, 'pyoutreg')
+        assert pystatar.__version__ == "0.4.0"
         
     def test_module_imports(self):
         """Test that individual modules import correctly."""
-        from pystatar import pyegen, pywinsor2, pdtab
+        from pystatar import pyegen, pywinsor2, pdtab, pyoutreg
         
         # Test pyegen functions
         assert hasattr(pyegen, 'rank')
@@ -33,15 +34,21 @@ class TestBasicFunctionality:
         assert hasattr(pdtab, 'tabulate')
         assert hasattr(pdtab, 'tab1')
         assert hasattr(pdtab, 'tab2')
+        
+        # Test pyoutreg functions
+        assert hasattr(pyoutreg, 'outreg')
+        assert hasattr(pyoutreg, 'outreg_compare')
+        assert hasattr(pyoutreg, 'summary_stats')
     
     def test_direct_function_access(self):
         """Test direct function access."""
-        from pystatar import rank, rowmean, winsor2, tabulate
+        from pystatar import rank, rowmean, winsor2, tabulate, outreg
         
         assert callable(rank)
         assert callable(rowmean)
         assert callable(winsor2)
         assert callable(tabulate)
+        assert callable(outreg)
     
     def test_basic_functionality(self):
         """Test basic functionality of main functions."""
